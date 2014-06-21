@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Place:
+  = @match.place
+%p
+  %b Host:
+  = @match.host
+%p
+  %b Visitor:
+  = @match.visitor
+%p
+  %b Date:
+  = @match.date
+
+= link_to 'Edit', edit_match_path(@match)
+\|
+= link_to 'Back', matches_path

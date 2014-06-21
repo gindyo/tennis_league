@@ -1,0 +1,23 @@
+%h1 Listing ranking_points_entries
+
+%table
+  %tr
+    %th Expire on
+    %th Total points
+    %th Player
+    %th
+    %th
+    %th
+
+  - @ranking_points_entries.each do |ranking_points_entry|
+    %tr
+      %td= ranking_points_entry.expire_on
+      %td= ranking_points_entry.total_points
+      %td= ranking_points_entry.player
+      %td= link_to 'Show', ranking_points_entry
+      %td= link_to 'Edit', edit_ranking_points_entry_path(ranking_points_entry)
+      %td= link_to 'Destroy', ranking_points_entry, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Ranking points entry', new_ranking_points_entry_path

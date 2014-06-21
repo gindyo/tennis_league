@@ -1,0 +1,2 @@
+module RankingPointsEntriesHelper
+end

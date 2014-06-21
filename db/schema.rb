@@ -11,7 +11,74 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608032933) do
+ActiveRecord::Schema.define(version: 20140614150735) do
+
+  create_table "home_courts", force: true do |t|
+    t.integer  "location_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locations", force: true do |t|
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "match_participants", force: true do |t|
+    t.integer  "match_id"
+    t.integer  "player_id"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "match_scores", force: true do |t|
+    t.integer  "set1"
+    t.integer  "set2"
+    t.integer  "set3"
+    t.integer  "set4"
+    t.integer  "set5"
+    t.integer  "match_participant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "matches", force: true do |t|
+    t.datetime "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "players", force: true do |t|
+    t.integer  "home_court_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "players", ["home_court_id"], name: "index_players_on_home_court_id"
+  add_index "players", ["user_id"], name: "index_players_on_user_id"
+
+  create_table "ranking_points_entries", force: true do |t|
+    t.date     "expire_on"
+    t.decimal  "points"
+    t.integer  "player_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ranking_points_entries", ["player_id"], name: "index_ranking_points_entries_on_player_id"
+
+  create_table "schedules", force: true do |t|
+    t.integer  "player_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "schedules", ["player_id"], name: "index_schedules_on_player_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

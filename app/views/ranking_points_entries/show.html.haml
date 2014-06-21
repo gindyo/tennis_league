@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Expire on:
+  = @ranking_points_entry.expire_on
+%p
+  %b Total points:
+  = @ranking_points_entry.total_points
+%p
+  %b Player:
+  = @ranking_points_entry.player
+
+= link_to 'Edit', edit_ranking_points_entry_path(@ranking_points_entry)
+\|
+= link_to 'Back', ranking_points_entries_path

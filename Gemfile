@@ -29,9 +29,12 @@ group :development do
 end
 group :development, :test do
   gem 'factory_girl_rails'
+  gem 'debugger'
   gem 'pry-rails'
+  gem 'guard-spork'
   gem 'pry-rescue'
   gem 'rspec-rails'
+  gem 'spork'
 end
 group :test do
   gem 'capybara'
