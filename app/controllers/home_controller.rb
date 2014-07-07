@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
-  def index
-    @player = current_user.get_player
+  before_action :authenticate, only: :index
+  def guest
+
   end
 end
+
