@@ -5,8 +5,8 @@
       = f.select :home_court_id, options_from_collection_for_select(@home_courts, :id, :name, @player.home_court.id.to_s),  :class => 'text_field'
   .control-group
     = f.label :user_name, :class => 'control-label'
-    .h4
-      = @player.name
+    %span.control-text-custom
+      =@player.name
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), players_path, :class => 'btn'
