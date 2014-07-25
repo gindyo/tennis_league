@@ -1,0 +1,16 @@
+%p
+  %p
+    %table.table.table-striped.table-hover
+      %tr
+        %th Player Name
+        %th Points
+        %th
+      -@opponents.each do |o|
+        %tr
+          %td.span6
+            =o.name
+          %td
+            =o.points
+          %td
+            .btn.btn-success
+              Request a match

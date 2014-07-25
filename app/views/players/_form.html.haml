@@ -1,16 +1,12 @@
-= form_for @player do |f|
-  - if @player.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@player.errors.count, "error")} prohibited this player from being saved:"
-      %ul
-        - @player.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :home_court
-    = f.text_field :home_court
-  .field
-    = f.label :user
-    = f.text_field :user
-  .actions
-    = f.submit 'Save'
+= form_for @player, :html => { :class => 'form-horizontal' } do |f|
+  .control-group
+    = f.label :home_court_id, :class => 'control-label'
+    .controls
+      = f.select :home_court_id, options_from_collection_for_select(@home_courts, :id, :name, @player.home_court.id.to_s),  :class => 'text_field'
+  .control-group
+    = f.label :user_name, :class => 'control-label'
+    .h4
+      = @player.name
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), players_path, :class => 'btn'

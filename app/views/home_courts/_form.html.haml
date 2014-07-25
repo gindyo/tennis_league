@@ -1,0 +1,8 @@
+=form_for @home_court do |f|
+  .fields
+    .field
+      =f.label :name
+      =f.text_field :name
+    =f.hidden_field :location
+  .actions
+    =f.submit 'Save home court',  path: :create_home_court

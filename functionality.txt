@@ -1,0 +1,13 @@
+- Signup for an account 
+-  View amount of points you have
+-  Enter Match score 
+-  View Match results
+-  Create Player profile
+  -  Find your home court on the map and set it as home court
+-  Setup a match 
+  -  View the players you are eligable to play with
+  -  Need to be able to sort them by (ranking, location)
+-  View your ranking
+-  View the rank list
+-  Write on a messsage board
+

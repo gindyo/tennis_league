@@ -1,0 +1,26 @@
+{
+  "name": "y",
+  "version": "y",
+  "homepage": "https://github.com/gindyo/tennis_league",
+  "authors": [
+    "Dimitar Ginev"
+  ],
+  "description": "y",
+  "main": "y",
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies":{
+    "bootstrap": "~3.0.0"
+   }
+  
+}

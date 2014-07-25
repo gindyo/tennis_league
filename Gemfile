@@ -14,6 +14,9 @@ gem 'devise'
 gem 'haml-rails'
 gem 'pundit'
 gem 'thin'
+gem "twitter-bootstrap-rails"
+gem "therubyracer"
+gem "less-rails"
 group :development do
   gem 'guard-bundler'
   gem 'guard-rails'

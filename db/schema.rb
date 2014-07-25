@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614150735) do
+ActiveRecord::Schema.define(version: 20140719152213) do
 
   create_table "home_courts", force: true do |t|
     t.integer  "location_id"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 20140614150735) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "match_requests", force: true do |t|
+    t.integer  "from"
+    t.integer  "to"
+    t.integer  "match_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "match_requests", ["match_id"], name: "index_match_requests_on_match_id"
 
   create_table "match_scores", force: true do |t|
     t.integer  "set1"

@@ -1,7 +1,7 @@
-class HomeCourtController < ApplicationContoller
-  before_action :authenticate
+class HomeCourtsController < ApplicationContoller
 
   def new
+    @home_court = HomeCourt.
 
   end
   def create_home_court

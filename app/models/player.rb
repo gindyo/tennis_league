@@ -1,4 +1,5 @@
 class Player  < ActiveRecord::Base
+  include Nullable
   belongs_to :home_court
   belongs_to :user
   has_one :schedule
@@ -9,7 +10,7 @@ class Player  < ActiveRecord::Base
     user.name
   end 
   def points
-    ranking_points_entries.select{|e| !e.expired? }.sum{|e| e.points}
+    ranking_points_entries.select{|e| !e.expired? }.sum{|e| e.points} || 0
   end
   def won_match_against player
     lost_points = player.points * 0.1

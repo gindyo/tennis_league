@@ -3,5 +3,8 @@ class HomeController < ApplicationController
   def guest
 
   end
+  def index
+    redirect_to :dashboard
+  end
 end
 
