@@ -2,34 +2,29 @@ class PlayersController < ApplicationController
 
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 
-  # GET /players
-  # GET /players.json
   def index
     @players = Player.all
   end
 
-  # GET /players/1
-  # GET /players/1.json
   def show
+    Deb.print @player.user, :name    
     @player =  PlayersHelper::PlayerViewModel.new Player.find params[:id]
   end
 
-  # GET /players/new
   def new
     @player = Player.new
     @player.user_id = current_user.id
+    @player = PlayersHelper::PlayerViewModel.new @player 
     @home_courts = home_courts
   end
 
-  # GET /players/1/edit
   def edit
     @home_courts = home_courts
   end
 
-  # POST /players
-  # POST /players.json
   def create
     @player = Player.create(player_params)
+    @player.user = current_user
 
     respond_to do |format|
       if @player.save
@@ -42,9 +37,7 @@ class PlayersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /players/1
-  # PATCH/PUT /players/1.json
-  def update
+ def update
    respond_to do |format|
       if @player.update(player_params)
         format.html { redirect_to @player, notice: 'Player was successfully updated.' }
@@ -56,8 +49,6 @@ class PlayersController < ApplicationController
     end
   end
 
-  # DELETE /players/1
-  # DELETE /players/1.json
   def destroy
     @player.destroy
     respond_to do |format|
@@ -65,22 +56,37 @@ class PlayersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
   def opponents
     @opponents = RankingSystem.get_opponents_for(current_user.player).map{|x| PlayersHelper::PlayerViewModel.new x}
   end
-
-
    private
   def home_courts
     HomeCourt.all
   end
-  # Use callbacks to share common setup or constraints between actions.
+
   def set_player
     @player = Player.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def player_params
     params.require(:player).permit(:home_court_id, :user_id)
   end
+end
+class Deb
+  def self.print var, meth = nil
+    puts '######################################'
+    puts '######################################'
+    puts '######################################'
+    if !var.nil?
+      puts (var.send meth).to_s if !meth.nil?
+      puts var.to_s if meth.nil?
+    else
+      puts 'Object is nil' 
+    end
+    puts '######################################'
+    puts '######################################'
+    puts '######################################'
+  end
+  
 end

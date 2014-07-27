@@ -1,3 +1,4 @@
+$LOAD_PATH << '../lib'
 #require "rails/all"
 #require 'rubygems'
 #require 'rspec/rails'
@@ -81,4 +82,5 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 =end
+
 end

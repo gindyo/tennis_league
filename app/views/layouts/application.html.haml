@@ -34,7 +34,9 @@
 
       .row
         .span12
-          =flash
+          -flash.each do |key, value|
+            %div{"class"=>flash_class(key)}
+              =value
           = yield
       %footer
       %p &copy; Company 2014

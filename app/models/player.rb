@@ -10,7 +10,7 @@ class Player  < ActiveRecord::Base
     user.name
   end 
   def points
-    ranking_points_entries.select{|e| !e.expired? }.sum{|e| e.points} || 0
+    RankingSystem.points_for self
   end
   def won_match_against player
     lost_points = player.points * 0.1

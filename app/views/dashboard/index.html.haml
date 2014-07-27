@@ -1,7 +1,8 @@
 %p
   =link_to "Your player profile", @player.url 
 %p
-  =link_to "Request a match", opponents_path(id: @player.id)
+  -if @player
+    =link_to "Request a match", @player.opponents_url
 %p
   ="Your current ranking is: #{@current_ranking}"
 %p

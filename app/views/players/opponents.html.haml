@@ -12,5 +12,8 @@
           %td
             =o.points
           %td
-            .btn.btn-success
-              Request a match
+            %form(method = "post"){:action=>"#{match_requests_path(o.id)}"}
+              =token_tag nil
+              =hidden_field(:match_request, :to, value: o.id)
+              %button.btn.btn-success
+                Request a match

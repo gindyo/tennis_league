@@ -1,5 +1,5 @@
 module PlayersHelper
-  class PlayerViewModel
+  class PlayerViewModel 
     attr_accessor :player
     def initialize player = nil
       self.player = (player || NilPlayer.new)
@@ -12,6 +12,9 @@ module PlayersHelper
     def name
        player.name || "Anonymous"
     end
+    def opponents_url
+      "/players/#{player.id}/opponents"
+    end
  
     def home_court_name
       return  player.home_court.name if player.home_court
@@ -22,6 +25,13 @@ module PlayersHelper
     end
     def method_missing meth
       return  player.send meth  
+    end
+
+    def home_court_id
+      0
+    end
+    def self.method_missing meth
+      Player.send meth 
     end
   end
 end

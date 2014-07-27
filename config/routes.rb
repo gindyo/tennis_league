@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get "/dashboard"  => "dashboard#index", as: :dashboard
   get "/maps/show" => "maps#show"
   get "/players/:id/opponents" => "players#opponents", as: :opponents
+  post "/match_requests/create/:to" => "match_requests#create", as: :match_requests
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users
   resources :home_courts
